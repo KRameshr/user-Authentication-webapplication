@@ -24,8 +24,8 @@
    ```bash
    https://github.com/KRameshr/user-Authentication-webapplication.git
   
-npm install
-npm start
+- **npm install**
+- **npm startt**
 
 
 
