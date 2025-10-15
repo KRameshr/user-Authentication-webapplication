@@ -1,0 +1,23 @@
+{
+  "name": "stepfour",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
+},
+  "keywords": [],
+  "author": "K Ramesh",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "client-sessions": "^0.8.0",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.2",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
