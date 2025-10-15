@@ -22,9 +22,10 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/tradex.git
+   https://github.com/KRameshr/user-Authentication-webapplication.git
   
 npm install
 npm start
+
 
 
