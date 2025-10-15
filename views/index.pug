@@ -1,0 +1,86 @@
+extends template
+
+block vars
+  - var title = ''
+  - var company = 'index/'
+  - var marketData = [{ name: 'Sensex', value: '₹82,042', change: '-0.41%' },{ name: 'Gold', value: '₹12,432/g', change: '+1.25%' },{ name: 'USD/INR', value: '₹88.75', change: '-0.23%' }]
+  - var partners = [{name:'NSE', img:'https://cdn-icons-png.flaticon.com/512/5968/5968858.png'},{name:'BSE', img:'https://cdn-icons-png.flaticon.com/512/5968/5968860.png'},{name:'Zerodha', img:'https://cdn-icons-png.flaticon.com/512/5968/5968750.png'},{name:'Upstox', img:'https://cdn-icons-png.flaticon.com/512/5968/5968723.png'}]
+
+block body
+  // Hero Section with TradingView Chart
+  .container-fluid.hero-section.d-flex.flex-column.justify-content-center.align-items-center.text-center(style="height:90vh; background:#fff; color:#333;")
+    h1.display-3.fw-bold.animate__animated.animate__fadeInDown TradeX: India’s Smart Trading Platform
+    p.lead.mt-3.animate__animated.animate__fadeInUp Trade stocks, mutual funds, and ETFs — all from one platform
+    .mt-4
+      a.btn.btn-warning.btn-lg.me-2(href="/login") Login
+      a.btn.btn-outline-warning.btn-lg(href="/register") Start Trading
+    .mt-5.w-100(style="max-width:900px;")
+      // TradingView Widget Container
+      #tradingview-widget-container(style="height:400px; border-radius:15px; overflow:hidden;")
+
+  // Market Overview Section
+  .container.my-5
+    h2.text-dark.mb-4.text-center.animate__animated.animate__fadeIn Market Overview Today
+    .row.justify-content-center
+      each data in marketData
+        .col-md-3.mb-3.animate__animated.animate__fadeInUp
+          .card.shadow-sm.p-4.text-center
+            h5.mb-2= data.name
+            if data.change.startsWith('+')
+              h3.text-success.mb-1= data.value
+              p.text-success.mb-0= data.change
+            else if data.change.startsWith('-')
+              h3.text-danger.mb-1= data.value
+              p.text-danger.mb-0= data.change
+            else
+              h3.text-warning.mb-1= data.value
+              p.text-muted.mb-0= data.change
+
+  // Tools & Calculators Section
+  .container.my-5.py-5.rounded.shadow-sm(style="background:#f8f9fa;")
+    h2.text-center.text-dark.mb-5.animate__animated.animate__fadeIn Investment Tools & Calculators
+    .row.text-center
+      .col-md-4.mb-4.animate__animated.animate__fadeInUp
+        i.bi.bi-calculator.display-2.mb-3.text-warning
+        h5 SIP Calculator
+        p.text-muted Plan systematic investments and project future wealth
+      .col-md-4.mb-4.animate__animated.animate__fadeInUp
+        i.bi.bi-bar-chart-line.display-2.mb-3.text-warning
+        h5 Portfolio Tracker
+        p.text-muted Monitor stocks, ETFs, and mutual funds
+      .col-md-4.mb-4.animate__animated.animate__fadeInUp
+        i.bi.bi-currency-exchange.display-2.mb-3.text-warning
+        h5 Stock Screener
+        p.text-muted Filter stocks based on technical/fundamental metrics
+
+  // Partners Section
+  .container.my-5.text-center
+    h2.text-dark.mb-5.animate__animated.animate__fadeIn Our Partners
+    .row.justify-content-center
+      each partner in partners
+        .col-6.col-md-3.mb-4.animate__animated.animate__fadeInUp
+          .card.border-0.shadow-sm.transition-hover.p-3
+            img(src=partner.img alt=partner.name class="img-fluid w-50 mx-auto mb-2")
+            h6.text-dark= partner.name
+
+  // Mobile Trading App Section
+  .container.my-5.text-center
+    h2.text-dark.mb-4.animate__animated.animate__fadeIn Trade on the Go
+    p.text-muted Access your portfolio, trade stocks, and track markets on mobile
+    a.btn.btn-warning.mt-3(href="#") Download App
+    p.text-muted.mt-2 Available on iOS and Android
+    .mt-4
+      i.bi.bi-phone.display-1.animate__animated.animate__fadeInUp(style="font-size:5rem; color:#FF8C00;")
+
+  // Testimonials Section
+  .container.my-5
+    h2.text-center.text-dark.mb-4.animate__animated.animate__fadeIn What Traders Say
+    .row.text-center
+      .col-md-4.mb-4.animate__animated.animate__fadeInUp
+        i.bi.bi-person-circle.display-1.mb-3.text-warning
+        p.text-muted "TradeX’s real-time charts and SIP calculator are game-changers!"
+        h6.text-warning.mt-2 Rohan M., Investor
+      .col-md-4.mb-4.animate__animated.animate__fadeInUp
+        i.bi.bi-person-circle.display-1.mb-3.text-warning
+        p.text-muted "I track my portfolio daily and execute trades within seconds."
+        h6.text-warning.mt-2 Sneha P., Trader

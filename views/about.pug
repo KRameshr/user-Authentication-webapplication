@@ -1,0 +1,124 @@
+extends template
+
+block vars
+  - var company = 'about/'
+  - var team = [{name: 'Ramesh Kumar', role: 'Founder & CEO', img: 'https://cdn-icons-png.flaticon.com/512/2922/2922506.png'},{name: 'Sneha Patel', role: 'Chief Technology Officer', img: 'https://cdn-icons-png.flaticon.com/512/2922/2922510.png'},{name: 'Arjun Mehta', role: 'Head of Design', img: 'https://cdn-icons-png.flaticon.com/512/2922/2922520.png'}]
+block body
+  // Hero Section
+  .container-fluid.bg-light.text-center.py-5
+    h1.display-4.text-warning About TradeX
+    p.lead.mb-0.text-warning Professional trading solutions for stocks, ETFs, and mutual funds in India.
+    p.text-muted.mt-2 Empowering investors with insights, tools, and analytics.
+
+  // Mission Section
+  .container.my-5
+    .row.align-items-center
+      .col-md-6
+        h3.text-warning.mb-3 Our Mission
+        p.text-muted To make trading simple, transparent, and efficient for every investor in India.
+        p.text-muted We deliver real-time market data, analytics, and AI-assisted trading tools for smarter decision-making.
+      .col-md-6.text-center
+        i.bi.bi-graph-up-arrow.text-warning(style="font-size:4rem;")
+
+  // Vision Section
+  .container.my-5
+    .row.align-items-center.flex-row-reverse
+      .col-md-6
+        h3.text-warning.mb-3 Our Vision
+        p.text-muted To become the most trusted and reliable trading platform in India, empowering users to grow their wealth confidently.
+      .col-md-6.text-center
+        i.bi.bi-lightbulb-fill.text-warning(style="font-size:4rem;")
+
+  // Team Section
+  .container.my-5
+    h3.text-center.text-warning.mb-4 Meet Our Team
+    .row.text-center.justify-content-center
+      if team && team.length
+        each member in team
+          .col-md-3.mb-4
+            .card.shadow-sm.border-0
+              img.card-img-top(src=member.img alt=member.name class="img-fluid rounded-top")
+              .card-body
+                h5.card-title.text-warning.mb-1 #{member.name}
+                p.card-text.text-muted.mb-0 #{member.role}
+      else
+        .col-12
+          p.text-center.text-muted No team members found.
+
+  // Core Values Section
+  .container.my-5
+    h3.text-center.text-warning.mb-4 Our Core Values
+    .row.text-center
+      .col-md-4.mb-4
+        i.bi.bi-shield-lock-fill.text-warning(style="font-size:2.5rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 Security
+        p.text-muted.mb-0 We maintain top-notch security for your trades and personal data.
+      .col-md-4.mb-4
+        i.bi.bi-bar-chart-line.text-warning(style="font-size:2.5rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 Innovation
+        p.text-muted.mb-0 AI-driven tools and analytics for smarter trading decisions.
+      .col-md-4.mb-4
+        i.bi.bi-people-fill.text-warning(style="font-size:2.5rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 Trust
+        p.text-muted.mb-0 Transparent practices and reliable support for every trader.
+
+  // Platform Features Section
+  .container.my-5.py-5.bg-light.rounded.shadow-sm
+    h3.text-center.text-warning.mb-5 Platform Features
+    .row.text-center
+      .col-md-4.mb-4
+        i.bi.bi-phone-display.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 Mobile Trading
+        p.text-muted Trade anytime, anywhere with our mobile app.
+      .col-md-4.mb-4
+        i.bi.bi-graph-up-arrow.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 Real-time Data
+        p.text-muted Access live market quotes, charts, and analytics.
+      .col-md-4.mb-4
+        i.bi.bi-robot.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 AI Tools
+        p.text-muted Smart recommendations and portfolio insights.
+
+  // Achievements / Milestones Section
+  .container.my-5
+    h3.text-center.text-warning.mb-5 Our Milestones
+    .row.text-center
+      .col-md-3.mb-4
+        i.bi.bi-trophy-fill.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 50k+ Users
+        p.text-muted Active traders on our platform.
+      .col-md-3.mb-4
+        i.bi.bi-calendar-check-fill.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 5 Years
+        p.text-muted Serving investors with reliable solutions.
+      .col-md-3.mb-4
+        i.bi.bi-globe.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 Nationwide
+        p.text-muted Accessible across India.
+      .col-md-3.mb-4
+        i.bi.bi-star-fill.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        h6.text-warning.mb-1 4.8/5 Rating
+        p.text-muted User satisfaction and trust score.
+
+  // Testimonials Section
+  .container.my-5
+    h3.text-center.text-warning.mb-4 What Traders Say
+    .row.text-center
+      .col-md-4.mb-4
+        i.bi.bi-person-circle.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        p.text-muted "TradeX’s real-time charts and SIP calculator are game-changers!"
+        h6.text-warning.mt-2 Rohan M., Investor
+      .col-md-4.mb-4
+        i.bi.bi-person-circle.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        p.text-muted "I track my portfolio daily and execute trades within seconds."
+        h6.text-warning.mt-2 Sneha P., Trader
+      .col-md-4.mb-4
+        i.bi.bi-person-circle.text-warning(style="font-size:3rem; margin-bottom:0.5rem;")
+        p.text-muted "Zerodha-style UI and analytics make trading simple and fast."
+        h6.text-warning.mt-2 Karan S., Day Trader
+
+  // Call to Action Section
+  .container-fluid.py-5.mt-5.text-center.text-light(style="background:#FF8C00;")
+    h3.fw-bold Ready to Start Trading?
+    p.lead.mt-3 Sign up today and experience smarter trading.
+    a.btn.btn-light.btn-lg.mt-3(href="/register") Open Your Account Now

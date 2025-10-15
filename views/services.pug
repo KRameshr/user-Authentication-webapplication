@@ -1,0 +1,31 @@
+extends template
+
+block vars
+
+  - var company = 'services/'
+  - var services = [{icon: 'bi-bar-chart-line', title: 'Real-time Market Data', desc: 'Access live quotes, charts, and analytics for stocks, ETFs, and mutual funds.'},{icon: 'bi-phone-display', title: 'Mobile Trading', desc: 'Trade anytime, anywhere with our user-friendly mobile app.'},{icon: 'bi-robot', title: 'AI Tools', desc: 'Receive smart recommendations, portfolio insights, and AI-assisted trading strategies.'},{icon: 'bi-calculator', title: 'SIP & Investment Calculators', desc: 'Plan and forecast your investments with our easy-to-use calculators.'},{icon: 'bi-people-fill', title: 'Portfolio Management', desc: 'Monitor your investments, track performance, and optimize returns.'},{icon: 'bi-shield-lock-fill', title: 'Secure Transactions', desc: 'Top-notch security protocols to ensure safe trading and data protection.'}]
+
+block body
+  // Hero Section
+  .container-fluid.bg-light.text-center.py-5
+    h1.display-4.text-warning Our Services
+    p.lead.mb-0 Orange-themed, professional trading solutions for every investor.
+    p.text-muted.mt-2 Explore the tools and services designed to empower your trading journey.
+
+  // Services Section
+  .container.my-5
+    h3.text-center.text-warning.mb-5 What We Offer
+    .row.text-center
+      each service in services
+        .col-md-4.mb-4
+          .card.shadow-sm.border-0.h-100
+            .card-body
+              i(class=`bi ${service.icon} text-warning mb-3`, style="font-size:3rem;")
+              h5.card-title.text-warning.mb-2= service.title
+              p.card-text.text-muted.mb-0= service.desc
+
+  // Additional Info / CTA Section
+  .container-fluid.py-5.mt-5.text-center.text-light(style="background:#FF8C00;")
+    h3.fw-bold Ready to Elevate Your Trading?
+    p.lead.mt-3 Sign up now and access all our professional trading services.
+    a.btn.btn-light.btn-lg.mt-3(href="/register") Start Trading Today

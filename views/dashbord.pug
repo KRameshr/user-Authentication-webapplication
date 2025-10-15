@@ -1,0 +1,37 @@
+extends template
+
+block vars
+  - var title = 'BankX Dashboard'
+  - var company = 'dashboard/'
+
+block body
+  .container.mt-5
+    h2.text-dark.mb-4.text-center Welcome, #{info.firstname}
+    .row
+      .col-md-4
+        .card.bg-warning.text-white.p-3.mb-3
+          h5 Account Balance
+          p $#{info.balance || '0.00'}
+      .col-md-4
+        .card.bg-info.text-white.p-3.mb-3
+          h5 Savings Account
+          p $#{info.savings || '0.00'}
+      .col-md-4
+        .card.bg-success.text-white.p-3.mb-3
+          h5 Investment Portfolio
+          p $#{info.investment || '0.00'}
+    h4.mt-5.mb-3 Recent Transactions
+    table.table.table-striped
+      thead
+        tr
+          th Date
+          th Type
+          th Amount
+          th Status
+      tbody
+        each tx in info.transactions || []
+          tr
+            td #{tx.date}
+            td #{tx.type}
+            td $#{tx.amount}
+            td #{tx.status}

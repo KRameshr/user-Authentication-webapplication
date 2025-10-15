@@ -1,0 +1,100 @@
+extends template
+
+block vars
+  - var company = 'register/'
+
+block body
+  .container.pt-5.pb-5.d-flex.justify-content-center.align-items-center(min-height="90vh")
+    .col-md-6.col-lg-5
+      if clienterror
+        p.text-danger.text-center.mb-3 #{clienterror}
+
+      .card.shadow-lg.rounded.p-5.bg-white.animate__animated.animate__fadeIn(style="border-top: 5px solid #FF8C00;")
+        h3.text-center.mb-4.fw-bold.text-warning Registration
+
+        form(action="/register" method="post")
+          // First Name
+          .mb-3
+            label.form-label(for="firstname") First Name
+            input#firstname.form-control(type="text" name="firstname" placeholder="Enter your first name" required)
+
+          // Last Name
+          .mb-3
+            label.form-label(for="lastname") Last Name
+            input#lastname.form-control(type="text" name="lastname" placeholder="Enter your last name" required)
+
+          // Email
+          .mb-3
+            label.form-label(for="email") Email Address
+            input#email.form-control(type="email" name="email" placeholder="you@example.com" required)
+
+          // Password with eye icon
+          .mb-3
+            label.form-label(for="password") Password
+            .input-group
+              input#password.form-control(type="password" name="password" placeholder="Enter a secure password" required minlength="6")
+              span.input-group-text.password-toggle(style="cursor:pointer; background:#FFE5B4; color:#FF8C00;" onclick="togglePassword()")
+                i.bi.bi-eye-slash-fill#toggleIcon
+
+          // Submit button
+          .d-grid.mt-4
+            input.btn.btn-warning.btn-lg.fw-bold(type="submit" value="Register")
+
+        // Login link
+        .text-center.mt-4
+          p.mb-0
+            | Already Registered? 
+            a.btn.btn-dark.text-white.text-decoration-none.ms-2(href="/login") Login Here
+
+  // CSS for inputs and buttons
+  style.
+    .card input {
+      border-radius: 0.35rem;
+      border: 1px solid #ced4da;
+      padding: 0.75rem 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .card input:focus {
+      box-shadow: 0 0 5px rgba(255,140,0,0.6);
+      border-color: #FF8C00;
+    }
+    .card .btn-warning {
+      background-color: #FF8C00;
+      color: #fff;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .card .btn-warning:hover {
+      background-color: #e67e00;
+      transform: translateY(-2px);
+    }
+    .card .btn-dark:hover {
+      background-color: #333333;
+      transform: translateY(-2px);
+    }
+    .input-group .password-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 0;
+      border-radius: 0 0.35rem 0.35rem 0;
+    }
+    .input-group .password-toggle i {
+      font-size: 1.1rem;
+    }
+
+  // Password toggle script
+  script.
+    function togglePassword() {
+      const password = document.getElementById('password');
+      const icon = document.getElementById('toggleIcon');
+      if (password.type === 'password') {
+        password.type = 'text';
+        icon.classList.remove('bi-eye-slash-fill');
+        icon.classList.add('bi-eye-fill');
+      } else {
+        password.type = 'password';
+        icon.classList.remove('bi-eye-fill');
+        icon.classList.add('bi-eye-slash-fill');
+      }
+    }

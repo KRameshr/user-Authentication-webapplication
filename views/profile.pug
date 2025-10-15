@@ -1,0 +1,89 @@
+extends template
+
+block vars
+  - var title = 'Profile Page'
+  - var company = "profile/"
+
+block body
+  .container.my-5
+    .card.shadow-lg.rounded.p-4
+      h3.text-warning.mb-4.text-center User Profile
+
+      // User Information
+      ul.list-group.list-group-flush.mb-4
+        li.list-group-item
+          strong User Name: 
+          | #{info.firstname} #{info.lastname}
+        li.list-group-item
+          strong Email: 
+          | #{info.email}
+
+      // Logout Button Only
+      .d-flex.justify-content-center.mb-4
+        a.btn.btn-warning(href="/logout") Logout
+
+      // Embedded Trading Chat Section
+      h4.text-warning.mb-3.text-center Trading Chat
+      .chat-container.border.rounded.p-3.mb-3(style="height:400px; overflow-y:auto; background:#fff7e6;")
+        // Example messages
+        each message, index in [ {user:'System', text:'Welcome to TradeX Chat!'},  {user: info.firstname + ' ' + info.lastname, text:'Hello, any tips for today’s market?'},{user:'TradeX Bot', text:'Check out the top gainers in NSE and BSE.'}]
+          .message.mb-2
+            if message.user == 'System' || message.user == 'TradeX Bot'
+              .text-warning
+                strong #{message.user}: 
+                | #{message.text}
+            else
+              .text-dark
+                strong #{message.user}: 
+                | #{message.text}
+
+      // Message Input
+      form.mt-3#chatForm
+        .input-group
+          input#chatInput.form-control(type="text" placeholder="Type your message..." required)
+          button.btn.btn-warning(type="submit") Send
+
+  // Custom styles
+  style.
+    .chat-container .message {
+      padding: 0.5rem;
+      border-radius: 0.35rem;
+      background: rgba(255,140,0,0.1);
+    }
+    .chat-container .text-warning {
+      color: #FF8C00;
+    }
+    #chatInput:focus {
+      box-shadow: 0 0 5px rgba(255,140,0,0.7);
+      border-color: #FF8C00;
+    }
+
+  // Client-side chat script
+  script.
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('chatInput');
+    const chatContainer = document.querySelector('.chat-container');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const msgText = input.value.trim();
+      if(msgText === '') return;
+
+      // Add user message
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('message', 'mb-2', 'text-dark');
+      msgDiv.innerHTML = `<strong>You:</strong> ${msgText}`;
+      chatContainer.appendChild(msgDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      input.value = '';
+
+      // Simulated bot response
+      setTimeout(() => {
+        const botDiv = document.createElement('div');
+        botDiv.classList.add('message', 'mb-2', 'text-warning');
+        botDiv.innerHTML = `<strong>TradeX Bot:</strong> This is a demo reply for "${msgText}"`;
+        chatContainer.appendChild(botDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 1000);
+    });
